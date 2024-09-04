@@ -139,12 +139,10 @@ We note that this GPTQ example is currently intended mostly as a demonstration o
 If you found this work useful, please consider citing:
 
 ```
-@misc{frantar2024marlin,
-  author = {Frantar, Elias and Alistarh, Dan},
-  title = {Marlin: a fast 4-bit inference kernel for medium batchsizes},
-  year = {2024},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/IST-DASLab/marlin}}
+@article{frantar2024marlin,
+  title={MARLIN: Mixed-Precision Auto-Regressive Parallel Inference on Large Language Models},
+  author={Frantar, Elias and Castro, Roberto L and Chen, Jiale and Hoefler, Torsten and Alistarh, Dan},
+  journal={arXiv preprint arXiv:2408.11743},
+  year={2024}
 }
 ```
