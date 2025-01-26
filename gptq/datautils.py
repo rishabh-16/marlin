@@ -9,13 +9,13 @@ def set_seed(seed):
 
 def get_wikitext2(nsamples, seed, seqlen, model):
     from datasets import load_dataset
-    traindata = load_dataset('wikitext', 'wikitext-2-raw-v1', split='train')
-    testdata = load_dataset('wikitext', 'wikitext-2-raw-v1', split='test')
+    traindata = load_dataset('wikitext', 'wikitext-2-raw-v1', split='train', cache_dir='/rscratch/rishabhtiwari/cache/')
+    testdata = load_dataset('wikitext', 'wikitext-2-raw-v1', split='test', cache_dir='/rscratch/rishabhtiwari/cache/')
 
     from transformers import AutoTokenizer 
     tokenizer = AutoTokenizer.from_pretrained(model, use_fast=False)
-    trainenc = tokenizer("\n\n".join(traindata['text']), return_tensors='pt')
-    testenc = tokenizer("\n\n".join(testdata['text']), return_tensors='pt')
+    trainenc = tokenizer("\n\n".join(traindata['text']), return_tensors='pt', cache_dir='/rscratch/rishabhtiwari/cache/')
+    testenc = tokenizer("\n\n".join(testdata['text']), return_tensors='pt', cache_dir='/rscratch/rishabhtiwari/cache/')
 
     import random
     random.seed(seed)
@@ -38,8 +38,8 @@ def get_red(nsamples, seed, seqlen, model):
 
     from datasets import load_dataset
     from transformers import AutoTokenizer 
-    tokenizer = AutoTokenizer.from_pretrained(model, use_fast=False)
-    traindata = load_dataset('togethercomputer/RedPajama-Data-1T-Sample', split='train')
+    tokenizer = AutoTokenizer.from_pretrained(model, use_fast=False, cache_dir='/rscratch/rishabhtiwari/cache/')
+    traindata = load_dataset('togethercomputer/RedPajama-Data-1T-Sample', split='train', cache_dir='/rscratch/rishabhtiwari/cache/')
 
     np.random.seed(0)
     perm = np.random.permutation(len(traindata))

@@ -29,7 +29,7 @@ def get_llama(name):
     torch.nn.init.uniform_ = skip
     torch.nn.init.normal_ = skip
     from transformers import LlamaForCausalLM
-    model = LlamaForCausalLM.from_pretrained(name, torch_dtype='auto')
+    model = LlamaForCausalLM.from_pretrained(name, torch_dtype='auto', cache_dir='/rscratch/rishabhtiwari/cache/')
     model.config.pretraining_tp = 1
     model.seqlen = 4096 
     return model
@@ -309,3 +309,4 @@ if __name__ == '__main__':
         llama_pack(model, quantizers)
         torch.save(model.state_dict(), args.save)
 
+# python llama2.py LargeWorldModel/LWM-Text-Chat-128K --wbits 4 --save checkpoint.pt
